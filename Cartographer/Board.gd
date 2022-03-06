@@ -1,7 +1,10 @@
 extends Node2D
 
+var maps = []
+
 func _ready():
-	pass
+	randomize();
+	maps = [$Map1, $Map2, $Map3]
 
 func _process(delta):
 	var move_adjust = delta * 500.0
@@ -24,11 +27,11 @@ func _on_ButtonInstructionNextTurn_pressed():
 	pass
 
 func _on_ButtonMapReset_pressed():
-	pass
+	var local_seed = 8 # randi()
+	for map in maps:
+		map.reset_and_randomize(local_seed)
 
 func _on_ButtonMapSetPlayerNames_pressed():
 	$Map1.set_name("Flutschi")
 	$Map2.set_name("Oliver")
 	$Map3.set_name("Thomas")
-
-
