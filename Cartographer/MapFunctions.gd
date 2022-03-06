@@ -9,6 +9,25 @@ const FO = "FOREST"
 const RU = "RUIN"
 const BO = "-" # Border
 
+"""
+X Mages Valley
+X Sentinel Wood
+- Shield Gate (Cluster)
+- Shoreside Expanse (Cluster)
+- Stondeside Forest (Cluster)
+X The Broken Road
+X The Cauldrons
+- The Golden Granary (Ruins)
+X Treetower
+- Wildholds (Cluster)
+X Borderlands
+- Canal Lake (Adjacent)
+- Great City (Cluster)
+X Greenbough
+- Greengold Plains (Cluster)
+- Lost Barony (Largest Square)
+"""
+
 static func check(dim, map):
 	# check x and y dimensions
 	assert(map.size() == dim)
@@ -132,7 +151,7 @@ static func score_sentinel_wood(dim, map):
 
 	return score
 
-static func the_broken_road(dim, map):
+static func score_the_broken_road(dim, map):
 	check(dim, map)
 	var score = 0
 
@@ -154,4 +173,4 @@ static func test():
 	assert(score_borderlands(3, [[WA, WA, WA], [WA, WA, EM], [WA, EM, EM]]) == 12)
 	assert(score_treetower(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 2)
 	assert(score_sentinel_wood(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 3)
-	assert(the_broken_road(3, [[WA, EM, WA], [EM, WA, EM], [WA, EM, WA]]) == 6)
+	assert(score_the_broken_road(3, [[WA, EM, WA], [EM, WA, EM], [WA, EM, WA]]) == 6)
