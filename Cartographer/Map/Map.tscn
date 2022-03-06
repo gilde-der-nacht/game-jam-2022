@@ -7,8 +7,11 @@ script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 456.0
-margin_bottom = 305.0
+margin_bottom = 72.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="Grid" type="Node2D" parent="."]
+position = Vector2( 45, 110 )
 
 [node name="PlayerName" type="Label" parent="."]
 margin_left = 20.0
@@ -21,8 +24,5 @@ text = "player_name:"
 margin_left = 20.0
 margin_top = 40.0
 margin_right = 350.0
-margin_bottom = 100.0
+margin_bottom = 72.0
 text = "map_state:"
-
-[node name="Grid" type="Node2D" parent="."]
-position = Vector2( 45, 110 )

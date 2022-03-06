@@ -35,12 +35,16 @@ func draw_map():
 	var tile = preload("res://Map/Tile.tscn")
 	var y_pos = 0
 	var x_pos = 0
-	for y in map_state:
-		for x in y:
+	for y in range(len(map_state)):
+		for x in range(len(map_state[y])):
+			var elem = map_state[y][x]
 			var inst = tile.instance()
 			inst.position.x = x_pos
 			inst.position.y = y_pos
-			draw_tile(inst, x)
+			inst.pos.x = x
+			inst.pos.y = y
+			inst.connect("on_mouse_entered", self, "on_Tile_mouse_entered")
+			draw_tile(inst, elem)
 			grid_output.add_child(inst)
 			x_pos += 50
 		y_pos += 50
@@ -68,3 +72,5 @@ func draw_tile(tile, state):
 		_:
 			sprite.texture = empty_img
 	
+func on_Tile_mouse_entered(tile):
+	print(tile.pos)

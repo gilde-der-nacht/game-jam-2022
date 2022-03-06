@@ -6,15 +6,19 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
 
-[node name="Tile" type="Area2D"]
+[node name="Tile" type="Node2D"]
 position = Vector2( 24, 24 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Graphic" type="Sprite" parent="."]
+[node name="ClickableTile" type="Area2D" parent="."]
+
+[node name="MouseArea" type="CollisionShape2D" parent="ClickableTile"]
+shape = SubResource( 1 )
+
+[node name="Graphic" type="Sprite" parent="ClickableTile"]
 texture = ExtResource( 2 )
 
-[node name="MouseArea" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[connection signal="mouse_entered" from="ClickableTile" to="." method="_on_ClickableTile_mouse_entered"]
