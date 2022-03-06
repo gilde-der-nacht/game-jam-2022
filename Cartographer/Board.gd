@@ -27,7 +27,15 @@ func _on_ButtonInstructionReset_pressed():
 	pass
 
 func _on_ButtonInstructionNextTurn_pressed():
-	pass
+	var edicts = [["ABC", 3], ["CDE", 4]]
+	var explore = [["XY", "AB"]]
+	if false:
+		$Instruction.next_turn()
+		edicts = $Instruction.current_edicts()
+		explore = $Instruction.current_explor()
+	$Log.text += "Edicts: " + String(edicts) + "\n"
+	$Log.text += "Explore: " + String(explore) + "\n"
+	$Log.cursor_set_line($Log.get_line_count()) # scroll to bottom
 
 func _on_ButtonMapReset_pressed():
 	var local_seed = 8 # randi()
