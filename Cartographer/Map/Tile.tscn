@@ -21,4 +21,5 @@ shape = SubResource( 1 )
 [node name="Graphic" type="Sprite" parent="ClickableTile"]
 texture = ExtResource( 2 )
 
+[connection signal="input_event" from="ClickableTile" to="." method="_on_ClickableTile_input_event"]
 [connection signal="mouse_entered" from="ClickableTile" to="." method="_on_ClickableTile_mouse_entered"]
