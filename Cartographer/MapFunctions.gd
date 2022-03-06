@@ -25,7 +25,7 @@ X CanalLake
 - GreatCity (Cluster)
 X Greenbough
 - GreengoldPlains (Cluster)
-X LostBarony (Largest Square)
+X LostBarony
 """
 
 static func check(dim, map):
@@ -120,7 +120,7 @@ static func score_treetower(dim, map):
 static func score_borderlands(dim, map):
 	check(dim, map)
 	var score = 0
-
+	
 	for y in range(dim):
 		var complete = true
 		for x in range(dim):

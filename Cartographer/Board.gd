@@ -1,7 +1,8 @@
 extends Node2D
 
 var maps = []
-var map_functions = null;
+var map_functions = null
+var seaseon_previous = ""
 
 func _ready():
 	randomize();
@@ -26,20 +27,24 @@ func _process(delta):
 func _on_ButtonInstructionReset_pressed():
 	var local_seed = 8 # randi()
 	$Instruction.game_reset(local_seed)
+	seaseon_previous = $Instruction.get_season()
 
 func _on_ButtonInstructionNextTurn_pressed():
 	if $Instruction.get_last_turn() == "end":
-		$Log.text += "END!"
+		$Log.text += "END!\n"
 	else:
 		$Instruction.next_turn()
 		var season = $Instruction.get_season()
 		var edicts = $Instruction.get_edicts()
 		var explore = $Instruction.get_explore()
-		var last_turn = $Instruction.get_last_turn()
+		var last_turn = $Instruction.get_last_turn() == "end"
+		var season_changed = season != seaseon_previous
+		seaseon_previous = season
 		$Log.text += "Season: " + String(season) + "\n"
 		$Log.text += "Edicts: " + String(edicts) + "\n"
 		$Log.text += "Explore: " + String(explore) + "\n"
 		$Log.text += "LastTurn: " + String(last_turn) + "\n"
+		$Log.text += "SeasonChanged: " + String(season_changed) + "\n"
 	$Log.cursor_set_line($Log.get_line_count()) # scroll to bottom
 
 func _on_ButtonMapReset_pressed():
