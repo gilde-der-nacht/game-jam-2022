@@ -23,3 +23,12 @@ func disable_round_button():
 
 func activate_round_button():
 	$NextRoundButton.disabled = false
+	
+func get_explore():
+	$Deck.get_explores()
+	
+func get_edicts():
+	$Deck.get_edicts()
+	
+func get_season():
+	$Deck.get_season()
