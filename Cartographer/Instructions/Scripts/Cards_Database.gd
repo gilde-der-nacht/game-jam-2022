@@ -1,59 +1,67 @@
 enum {SentinelWood, Greenbough, Treetower, StonesideForest, CanalLake, MagesValley, theGoldenGranary, ShoresideExpanse, Wildholds, GreatCity, GreengoldPlains, Shieldgate, Borderlands, LostBarony, 
-	theBrokenRoad, TheCauldrons, GreatRiver, Farmland, Hamlet, ForgottenForest, HinterlandStream, Homestead, Orchard, TreetopVillage, Marshlands, FishingVillage, RiftLands}
+	theBrokenRoad, TheCauldrons, GreatRiver, Farmland, Hamlet, ForgottenForest, HinterlandStream, Homestead, Orchard, TreetopVillage, Marshlands, FishingVillage, RiftLands, Spring, Summer, Fall, Winter}
 
 const DATA = {
 	SentinelWood :
-		["Edict", "SentinelWood"],
+		["Edict", "SentinelWood", "0"],
 	Greenbough :
-		["Edict", "Greenbough"],
+		["Edict", "Greenbough", "0"],
 	Treetower :
-		['Edict', "Treetower"],
+		['Edict', "Treetower", "0"],
 	StonesideForest :
-		['Edict', "StonesideForest"],
+		['Edict', "StonesideForest", "0"],
 	CanalLake :
-		['Edict', "CanalLake"],
+		['Edict', "CanalLake", "0"],
 	MagesValley :
-		['Edict', "MagesValley"],
+		['Edict', "MagesValley", "0"],
 	theGoldenGranary :
-		['Edict', "theGoldenGranary"],
+		['Edict', "theGoldenGranary", "0"],
 	ShoresideExpanse :
-		['Edict', "ShoresideExpanse"],
+		['Edict', "ShoresideExpanse", "0"],
 	Wildholds :
-		['Edict', "Wildholds"],
+		['Edict', "Wildholds", "0"],
 	GreatCity :
-		['Edict', "GreatCity"],
+		['Edict', "GreatCity", "0"],
 	GreengoldPlains :
-		['Edict', "GreengoldPlains"],
+		['Edict', "GreengoldPlains", "0"],
 	Shieldgate :
-		['Edict', "Shieldgate"],
+		['Edict', "Shieldgate", "0"],
 	Borderlands :
-		['Edict', "Borderlands"],
+		['Edict', "Borderlands", "0"],
 	LostBarony :
-		['Edict', "LostBarony"],
+		['Edict', "LostBarony", "0"],
 	theBrokenRoad :
-		['Edict', "theBrokenRoad"],
+		['Edict', "theBrokenRoad", "0"],
 	TheCauldrons :
-		['Edict', "TheCauldrons"],
+		['Edict', "TheCauldrons", "0"],
 	GreatRiver :
-		['Explore', "GreatRiver"],
+		['Explore', "GreatRiver", "1"],
 	Farmland :
-		['Explore', "Farmland"],
+		['Explore', "Farmland", "1"],
 	Hamlet :
-		['Explore', "Hamlet"],
+		['Explore', "Hamlet", "1"],
 	ForgottenForest :
-		['Explore', "ForgottenForest"],
+		['Explore', "ForgottenForest", "1"],
 	HinterlandStream :
-		['Explore', "HinterlandStream"],
+		['Explore', "HinterlandStream", "2"],
 	Homestead :
-		['Explore', "Homestead"],
+		['Explore', "Homestead", "2"],
 	Orchard :
-		['Explore', "Orchard"],
+		['Explore', "Orchard", "2"],
 	TreetopVillage :
-		['Explore', "TreetopVillage"],
+		['Explore', "TreetopVillage", "2"],
 	Marshlands :
-		['Explore', "Marshlands"],
+		['Explore', "Marshlands", "2"],
 	FishingVillage :
-		['Explore', "FishingVillage"],
+		['Explore', "FishingVillage", "2"],
 	RiftLands :
-		['Explore', "RiftLands"],
+		['Explore', "RiftLands", "0"],
+	Spring :
+		['Seasons', "Spring", "8"],
+	Summer :
+		['Seasons', "Summer", "8"],
+	Fall :
+		['Seasons', "Fall", "7"],
+	Winter :
+		['Seasons', "Winter", "6"],
 }

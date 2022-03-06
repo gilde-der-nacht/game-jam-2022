@@ -13,6 +13,13 @@ func next_turn():
 	$Deck.next_turn()
 
 func _on_Button_pressed():
-	$Deck.draw_card()
-	print("Pressed")
-	pass # Replace with function body.
+	$Deck.draw_card()	
+
+func _on_Button2_pressed():
+	$Deck.reset()
+
+func disable_round_button():
+	$NextRoundButton.disabled = true
+
+func activate_round_button():
+	$NextRoundButton.disabled = false

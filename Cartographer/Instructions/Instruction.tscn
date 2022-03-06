@@ -7,12 +7,12 @@
 scale = Vector2( 0.92, 1.02456 )
 script = ExtResource( 2 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 76.087
-margin_top = 53.6813
-margin_right = 425.087
-margin_bottom = 140.681
-text = "Debug"
+[node name="NextRoundButton" type="Button" parent="."]
+margin_left = 59.7826
+margin_top = 21.4726
+margin_right = 189.783
+margin_bottom = 72.4726
+text = "Next Round"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,4 +22,15 @@ script = ExtResource( 4 )
 
 [node name="Card" type="Node" parent="Deck"]
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="Button2" type="Button" parent="."]
+margin_left = 55.4348
+margin_top = 96.6268
+margin_right = 334.435
+margin_bottom = 145.627
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="NextRoundButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
