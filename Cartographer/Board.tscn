@@ -57,6 +57,10 @@ position = Vector2( 802, 572 )
 position = Vector2( 1153, 573 )
 script = ExtResource( 3 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 872, 410 )
+current = true
+
 [connection signal="pressed" from="ButtonInstructionReset" to="." method="_on_ButtonInstructionReset_pressed"]
 [connection signal="pressed" from="ButtonInstructionNextTurn" to="." method="_on_ButtonInstructionNextTurn_pressed"]
 [connection signal="pressed" from="ButtonMapReset" to="." method="_on_ButtonMapReset_pressed"]
