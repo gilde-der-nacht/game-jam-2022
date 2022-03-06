@@ -4,14 +4,14 @@ var player_name = ""
 onready var player_name_output = get_node("PlayerName")
 
 func _ready():
-	update_player_name()
+	update_ui()
 
-func set_name(name):
-	player_name = name
-	update_player_name()
+func set_player_name(player_name):
+	self.player_name = player_name
+	update_ui()
 
-func update_player_name():
-	player_name_output.set_text(player_name)
+func update_ui():
+	player_name_output.set_text("player_name: " + player_name)
 
 func reset_and_randomize(local_seed):
 	player_name = ""

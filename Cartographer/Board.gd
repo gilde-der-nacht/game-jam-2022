@@ -32,6 +32,6 @@ func _on_ButtonMapReset_pressed():
 		map.reset_and_randomize(local_seed)
 
 func _on_ButtonMapSetPlayerNames_pressed():
-	$Map1.set_name("Flutschi")
-	$Map2.set_name("Oliver")
-	$Map3.set_name("Thomas")
+	$Map1.set_player_name("Flutschi")
+	$Map2.set_player_name("Oliver")
+	$Map3.set_player_name("Thomas")
