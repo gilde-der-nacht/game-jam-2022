@@ -49,6 +49,7 @@ func reset(rng_seed):
 	Seasons = "Spring"
 	
 	rng.seed = rng_seed
+	game_state = "playing"
 	
 	reset_deck()
 
@@ -208,19 +209,19 @@ func reset_deck():
 	
 var active_explore = null
 func draw_card():
-	game_state = "playing"
-	var new_explore = CardBase.instance()		
-	var Explorer_CardName = Explorer_CardList[randi() % Decksize]
-	new_explore.Cardname = Explorer_CardName
-	new_explore.set_tile_pos(Vector2(Explore_x, Explore_y))
-	new_explore.set_scale(Vector2(0.3, 0.3))
-	Season_Timer += int(CardDataBase.DATA[CardDataBase.get(Explorer_CardName)][2])
-	check_Season()
-	infos_label.text = str(Seasons + "\n" + str(Season_Timer))
-	$Card.add_child(new_explore)
-	active_explore = new_explore
-	Explorer_CardList.erase(Explorer_CardName)
-	Decksize -= 1
+	if game_state == "playing":	
+		var new_explore = CardBase.instance()		
+		var Explorer_CardName = Explorer_CardList[randi() % Decksize]
+		new_explore.Cardname = Explorer_CardName
+		new_explore.set_tile_pos(Vector2(Explore_x, Explore_y))
+		new_explore.set_scale(Vector2(0.3, 0.3))
+		Season_Timer += int(CardDataBase.DATA[CardDataBase.get(Explorer_CardName)][2])
+		check_Season()
+		infos_label.text = str(Seasons + "\n" + str(Season_Timer))
+		$Card.add_child(new_explore)
+		active_explore = new_explore
+		Explorer_CardList.erase(Explorer_CardName)
+		Decksize -= 1
 
 
 var edict_scale = 0.2
