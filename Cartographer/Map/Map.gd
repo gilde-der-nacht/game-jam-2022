@@ -3,9 +3,9 @@ extends Node2D
 var player_name = ""
 onready var player_name_output = get_node("PlayerName")
 const map_empty_state = [
-	["EMPTY","EMPTY","EMPTY"],
-	["EMPTY","EMPTY","EMPTY"],
-	["EMPTY","EMPTY","EMPTY"],
+	["EMPTY","MOUNTAIN","EMPTY"],
+	["FARM","EMPTY","FOREST"],
+	["EMPTY","VILLAGE","WATER"],
 ]
 var map_state = map_empty_state.duplicate(true)
 onready var map_state_output = get_node("MapState")
@@ -40,7 +40,29 @@ func draw_map():
 			var inst = tile.instance()
 			inst.position.x = x_pos
 			inst.position.y = y_pos
+			draw_tile(inst, x)
 			grid_output.add_child(inst)
 			x_pos += 50
 		y_pos += 50
 		x_pos = 0
+
+func draw_tile(tile, state):
+	var mountain_img = preload("res://Graphics/Mountain Tile.PNG")
+	var farm_img = preload("res://Graphics/Farm Tile.PNG")
+	var forest_img = preload("res://Graphics/Forest Tile.PNG")
+	var village_img = preload("res://Graphics/Village Tile.PNG")
+	var water_img = preload("res://Graphics/Water Tile.PNG")
+	var sprite = tile.get_graphic()
+	if state == "MOUNTAIN":
+		sprite.texture = mountain_img
+	elif state == "FARM":
+		sprite.texture = farm_img
+	elif state == "FOREST":
+		sprite.texture = forest_img
+	elif state == "VILLAGE":
+		sprite.texture = village_img
+	elif state == "WATER":
+		sprite.texture = water_img
+	else:
+		sprite.texture = null
+	

@@ -1,3 +1,4 @@
 extends Node2D
 
-var tile_state = "EMPTY"
+func get_graphic():
+	return $Graphic
