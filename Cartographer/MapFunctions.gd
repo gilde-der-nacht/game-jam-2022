@@ -6,7 +6,7 @@ const EM = "EMPTY"
 const MO = "MOUNTAIN"
 const FA = "FARM"
 const FO = "FOREST"
-
+const RU = "RUIN"
 const BO = "-" # Border
 
 static func check(dim, map):
@@ -132,6 +132,21 @@ static func score_sentinel_wood(dim, map):
 
 	return score
 
+static func the_broken_road(dim, map):
+	check(dim, map)
+	var score = 0
+
+	for y in range(dim):
+		var diagonal_filled = true
+		for n in range(dim - y):
+			if map[n + y][n] == EM:
+				diagonal_filled = false
+
+		if diagonal_filled:
+			score += 3
+
+	return score
+
 static func test():
 	assert(score_greenbough(3, [[WA, WA, FO], [FO, FO, WA], [WA, WA, WA]]) == 5)
 	assert(score_mages_valley(3, [[FA, WA, EM], [WA, MO, FA], [WA, FA , EM]]) == 6)
@@ -139,3 +154,4 @@ static func test():
 	assert(score_borderlands(3, [[WA, WA, WA], [WA, WA, EM], [WA, EM, EM]]) == 12)
 	assert(score_treetower(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 2)
 	assert(score_sentinel_wood(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 3)
+	assert(the_broken_road(3, [[WA, EM, WA], [EM, WA, EM], [WA, EM, WA]]) == 6)
