@@ -11,7 +11,13 @@ config_version=4
 [application]
 
 config/name="Cartographer"
+run/main_scene="res://Board.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1700
+window/size/height=900
 
 [physics]
 
