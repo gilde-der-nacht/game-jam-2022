@@ -1,10 +1,12 @@
 extends Node2D
 
 var maps = []
+var map_functions = null;
 
 func _ready():
 	randomize();
 	maps = [$Map1, $Map2, $Map3]
+	map_functions = preload("res://MapFunctions.gd")
 
 func _process(delta):
 	var move_adjust = delta * 500.0
