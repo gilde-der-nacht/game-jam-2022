@@ -15,7 +15,7 @@ const DATA = {
 	MagesValley :
 		['Edict', "MagesValley", "0"],
 	theGoldenGranary :
-		['Edict', "theGoldenGranary", "0"],
+		['Edict', "TheGoldenGranary", "0"],
 	ShoresideExpanse :
 		['Edict', "ShoresideExpanse", "0"],
 	Wildholds :
@@ -31,7 +31,7 @@ const DATA = {
 	LostBarony :
 		['Edict', "LostBarony", "0"],
 	theBrokenRoad :
-		['Edict', "theBrokenRoad", "0"],
+		['Edict', "TheBrokenRoad", "0"],
 	TheCauldrons :
 		['Edict', "TheCauldrons", "0"],
 	GreatRiver :
