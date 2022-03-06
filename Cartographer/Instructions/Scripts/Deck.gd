@@ -5,8 +5,8 @@ const CardBase = preload("res://Instructions/Cards.tscn")
 onready var CardDataBase = preload("res://Instructions/Scripts/Cards_Database.gd")
 
 const Edict_CardList = ["SentinelWood", "Greenbough", "Treetower", "StonesideForest", "CanalLake", "MagesValley", 
-	"theGoldenGranary", "ShoresideExpanse", "Wildholds", "GreatCity", "GreengoldPlains", "Shieldgate", "Borderlands", "LostBarony", 
-	"theBrokenRoad", "TheCauldrons"]
+	"TheGoldenGranary", "ShoresideExpanse", "Wildholds", "GreatCity", "GreengoldPlains", "Shieldgate", "Borderlands", "LostBarony", 
+	"TheBrokenRoad", "TheCauldrons"]
 var Explorer_CardList = ["GreatRiver", "Farmland", "Hamlet", "ForgottenForest", "HinterlandStream", "Homestead", "Orchard", "TreetopVillage", "Marshlands", "FishingVillage", "RiftLands"]
 const Ruins_CardList = ['TempleRuins', 'OutpostRuins']
 const Monster_CardList = ['GoblinAttack', 'BugbearAssault', 'KoboldOnslaugt', 'GnollRaid']

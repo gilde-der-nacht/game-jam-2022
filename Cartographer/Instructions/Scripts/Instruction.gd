@@ -16,7 +16,7 @@ func _on_Button_pressed():
 	$Deck.draw_card()	
 
 func _on_Button2_pressed():
-	$Deck.reset()
+	$Deck.reset(8)
 	
 func game_reset(rng_seed):
 	$Deck.reset(rng_seed)
