@@ -59,7 +59,7 @@ position = Vector2( 1153, 573 )
 script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 872, 410 )
+position = Vector2( 850, 450 )
 current = true
 
 [node name="Instruction" parent="." instance=ExtResource( 4 )]
