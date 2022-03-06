@@ -26,8 +26,8 @@ static func neighbours(dim, map, x, y):
 # TODO instead of repeating half of the code, rotate board and call the same score function twice?
 static func score_greenbough(dim, map):
 	check(dim, map)
-
 	var score = 0
+	
 	for y in range(dim):
 		var at_least_one = false
 		for x in range(dim):
@@ -48,7 +48,6 @@ static func score_greenbough(dim, map):
 		
 static func score_mages_valley(dim, map):
 	check(dim, map)
-	
 	var score = 0
 
 	for y in range(dim):
@@ -65,7 +64,6 @@ static func score_mages_valley(dim, map):
 	
 static func score_the_cauldrons(dim, map):
 	check(dim, map)
-	
 	var score = 0
 
 	for y in range(dim):
@@ -81,9 +79,32 @@ static func score_the_cauldrons(dim, map):
 
 	return score
 
+static func score_borderlands(dim, map):
+	check(dim, map)
+	var score = 0
+
+	for y in range(dim):
+		var complete = true
+		for x in range(dim):
+			if map[y][x] == EM:
+				complete = false
+		if complete:
+			score += 6
+
+	for x in range(dim):
+		var complete = true
+		for y in range(dim):
+			if map[y][x] == EM:
+				complete = false
+		if complete:
+			score += 6
+
+	return score
+
 static func test():
 	check(2, [[0, 0], [0, 0]])
 	
 	assert(score_greenbough(3, [[WA, WA, FO], [FO, FO, WA], [WA, WA, WA]]) == 5)
 	assert(score_mages_valley(3, [[FA, WA, EM], [WA, MO, FA], [WA, FA , EM]]) == 6)
 	assert(score_the_cauldrons(4, [[EM, WA, WA, EM], [WA, EM, WA, EM], [EM, WA, EM, EM], [EM, EM, EM, EM]]) == 2)
+	assert(score_borderlands(3, [[WA, WA, WA], [WA, WA, EM], [WA, EM, EM]]) == 12)
