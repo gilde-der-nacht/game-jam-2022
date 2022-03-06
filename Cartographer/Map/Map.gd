@@ -47,11 +47,11 @@ func draw_map():
 		x_pos = 0
 
 func draw_tile(tile, state):
-	var mountain_img = preload("res://Graphics/Mountain Tile.PNG")
-	var farm_img = preload("res://Graphics/Farm Tile.PNG")
-	var forest_img = preload("res://Graphics/Forest Tile.PNG")
-	var village_img = preload("res://Graphics/Village Tile.PNG")
-	var water_img = preload("res://Graphics/Water Tile.PNG")
+	var mountain_img = preload("res://Graphics/Mountain_Tile.png")
+	var farm_img = preload("res://Graphics/Farm_Tile.png")
+	var forest_img = preload("res://Graphics/Forest_Tile.png")
+	var village_img = preload("res://Graphics/Village_Tile.png")
+	var water_img = preload("res://Graphics/Water_Tile.png")
 	var sprite = tile.get_graphic()
 	if state == "MOUNTAIN":
 		sprite.texture = mountain_img

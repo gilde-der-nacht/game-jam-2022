@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Water Tile.PNG-1015434763f89211252515da03ffda5b.stex"
+path="res://.import/Basic_Sheet.png-4c0fa5ae15bd8014033a49cc694059c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Water Tile.PNG"
-dest_files=[ "res://.import/Water Tile.PNG-1015434763f89211252515da03ffda5b.stex" ]
+source_file="res://Graphics/Basic_Sheet.png"
+dest_files=[ "res://.import/Basic_Sheet.png-4c0fa5ae15bd8014033a49cc694059c5.stex" ]
 
 [params]
 

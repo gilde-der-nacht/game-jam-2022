@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Monster Tile.PNG-3d0c2aea3d24369c39bacfe48c10ce4d.stex"
+path="res://.import/Mountain_Tile.png-46401537175bb64a22059c23d3237383.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Monster Tile.PNG"
-dest_files=[ "res://.import/Monster Tile.PNG-3d0c2aea3d24369c39bacfe48c10ce4d.stex" ]
+source_file="res://Graphics/Mountain_Tile.png"
+dest_files=[ "res://.import/Mountain_Tile.png-46401537175bb64a22059c23d3237383.stex" ]
 
 [params]
 

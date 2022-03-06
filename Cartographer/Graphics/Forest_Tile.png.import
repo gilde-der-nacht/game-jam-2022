@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Village Tile.PNG-7113944519347e8e36346db90a522f7b.stex"
+path="res://.import/Forest_Tile.png-ec7e610d1e08648be4974d241100da71.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Village Tile.PNG"
-dest_files=[ "res://.import/Village Tile.PNG-7113944519347e8e36346db90a522f7b.stex" ]
+source_file="res://Graphics/Forest_Tile.png"
+dest_files=[ "res://.import/Forest_Tile.png-ec7e610d1e08648be4974d241100da71.stex" ]
 
 [params]
 

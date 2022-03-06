@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/map sheet.jpg-688661618396a4b51a3477ced18e9696.stex"
+path="res://.import/Water_Tile.png-15ce70dff26aa55f488d005dfe6b31f3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/map sheet.jpg"
-dest_files=[ "res://.import/map sheet.jpg-688661618396a4b51a3477ced18e9696.stex" ]
+source_file="res://Graphics/Water_Tile.png"
+dest_files=[ "res://.import/Water_Tile.png-15ce70dff26aa55f488d005dfe6b31f3.stex" ]
 
 [params]
 

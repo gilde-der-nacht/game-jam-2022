@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Map/Tile.gd" type="Script" id=1]
-[ext_resource path="res://Graphics/Mountain Tile.PNG" type="Texture" id=2]
+[ext_resource path="res://Graphics/Mountain_Tile.png" type="Texture" id=2]
 
 [node name="Tile" type="Node2D"]
 position = Vector2( 24, 24 )
