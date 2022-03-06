@@ -230,7 +230,7 @@ var Edict_Size = 55
 var Edict_x = 460
 var Edict_y = 300
 
-var infos_label = Label.new()		
+var infos_label = Label.new()
 
 var all_Edicts = []	
 
