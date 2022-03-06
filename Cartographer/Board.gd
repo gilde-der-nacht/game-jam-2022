@@ -7,6 +7,7 @@ func _ready():
 	randomize();
 	maps = [$Map1, $Map2, $Map3]
 	map_functions = preload("res://MapFunctions.gd")
+	map_functions.test()
 
 func _process(delta):
 	var move_adjust = delta * 500.0
