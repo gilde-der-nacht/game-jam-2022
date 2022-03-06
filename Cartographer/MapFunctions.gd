@@ -166,6 +166,22 @@ static func score_the_broken_road(dim, map):
 
 	return score
 
+static func score_canal_lake(dim, map):
+	check(dim, map)
+	var score = 0
+
+	for y in range(dim):
+		for x in range(dim):
+			var n = neighbours(dim, map, x, y)
+			var water_around = (n.left == WA) or (n.right == WA) or (n.top == WA) or (n.bottom == WA)
+			var farm_around = (n.left == FA) or (n.right == FA) or (n.top == FA) or (n.bottom == FA)
+			if (n.center == FA) and water_around:
+				score += 1
+			if (n.center == WA) and farm_around:
+				score += 1
+
+	return score
+
 static func test():
 	assert(score_greenbough(3, [[WA, WA, FO], [FO, FO, WA], [WA, WA, WA]]) == 5)
 	assert(score_mages_valley(3, [[FA, WA, EM], [WA, MO, FA], [WA, FA , EM]]) == 6)
@@ -174,3 +190,4 @@ static func test():
 	assert(score_treetower(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 2)
 	assert(score_sentinel_wood(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 3)
 	assert(score_the_broken_road(3, [[WA, EM, WA], [EM, WA, EM], [WA, EM, WA]]) == 6)
+	assert(score_canal_lake(2, [[FA, WA], [WA, FO]]) == 3)
