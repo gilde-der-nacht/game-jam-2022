@@ -3,9 +3,9 @@ extends Node2D
 var player_name = ""
 onready var player_name_output = get_node("PlayerName")
 const map_empty_state = [
-	["EMPTY","MOUNTAIN","EMPTY"],
-	["FARM","EMPTY","FOREST"],
-	["EMPTY","VILLAGE","WATER"],
+	["EMPTY","EMPTY","EMPTY"],
+	["EMPTY","EMPTY","EMPTY"],
+	["EMPTY","EMPTY","EMPTY"],
 ]
 var map_state = map_empty_state.duplicate(true)
 onready var map_state_output = get_node("MapState")
@@ -53,16 +53,17 @@ func draw_tile(tile, state):
 	var village_img = preload("res://Graphics/Village_Tile.png")
 	var water_img = preload("res://Graphics/Water_Tile.png")
 	var sprite = tile.get_graphic()
-	if state == "MOUNTAIN":
-		sprite.texture = mountain_img
-	elif state == "FARM":
-		sprite.texture = farm_img
-	elif state == "FOREST":
-		sprite.texture = forest_img
-	elif state == "VILLAGE":
-		sprite.texture = village_img
-	elif state == "WATER":
-		sprite.texture = water_img
-	else:
-		sprite.texture = null
+	match state:
+		"MOUNTAIN":
+			sprite.texture = mountain_img
+		"FARM":
+			sprite.texture = farm_img
+		"FOREST":
+			sprite.texture = forest_img
+		"VILLAGE":
+			sprite.texture = village_img
+		"WATER":
+			sprite.texture = water_img
+		_:
+			sprite.texture = null
 	
