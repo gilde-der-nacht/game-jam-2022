@@ -1,0 +1,59 @@
+enum {SentinelWood, Greenbough, Treetower, StonesideForest, CanalLake, MagesValley, theGoldenGranary, ShoresideExpanse, Wildholds, GreatCity, GreengoldPlains, Shieldgate, Borderlands, LostBarony, 
+	theBrokenRoad, TheCauldrons, GreatRiver, Farmland, Hamlet, ForgottenForest, HinterlandStream, Homestead, Orchard, TreetopVillage, Marshlands, FishingVillage, RiftLands}
+
+const DATA = {
+	SentinelWood :
+		["Edict", "SentinelWood"],
+	Greenbough :
+		["Edict", "Greenbough"],
+	Treetower :
+		['Edict', "Treetower"],
+	StonesideForest :
+		['Edict', "StonesideForest"],
+	CanalLake :
+		['Edict', "CanalLake"],
+	MagesValley :
+		['Edict', "MagesValley"],
+	theGoldenGranary :
+		['Edict', "theGoldenGranary"],
+	ShoresideExpanse :
+		['Edict', "ShoresideExpanse"],
+	Wildholds :
+		['Edict', "Wildholds"],
+	GreatCity :
+		['Edict', "GreatCity"],
+	GreengoldPlains :
+		['Edict', "GreengoldPlains"],
+	Shieldgate :
+		['Edict', "Shieldgate"],
+	Borderlands :
+		['Edict', "Borderlands"],
+	LostBarony :
+		['Edict', "LostBarony"],
+	theBrokenRoad :
+		['Edict', "theBrokenRoad"],
+	TheCauldrons :
+		['Edict', "TheCauldrons"],
+	GreatRiver :
+		['Explore', "GreatRiver"],
+	Farmland :
+		['Explore', "Farmland"],
+	Hamlet :
+		['Explore', "Hamlet"],
+	ForgottenForest :
+		['Explore', "ForgottenForest"],
+	HinterlandStream :
+		['Explore', "HinterlandStream"],
+	Homestead :
+		['Explore', "Homestead"],
+	Orchard :
+		['Explore', "Orchard"],
+	TreetopVillage :
+		['Explore', "TreetopVillage"],
+	Marshlands :
+		['Explore', "Marshlands"],
+	FishingVillage :
+		['Explore', "FishingVillage"],
+	RiftLands :
+		['Explore', "RiftLands"],
+}

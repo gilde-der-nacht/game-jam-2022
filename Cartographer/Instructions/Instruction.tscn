@@ -1,13 +1,25 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Instructions/Scripts/Instruction.gd" type="Script" id=2]
+[ext_resource path="res://Instructions/Scripts/Deck.gd" type="Script" id=4]
 
 [node name="Instruction" type="Node2D"]
+scale = Vector2( 0.92, 1.02456 )
+script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 29.0
-margin_top = 43.0
-margin_right = 378.0
-margin_bottom = 130.0
+margin_left = 76.087
+margin_top = 53.6813
+margin_right = 425.087
+margin_bottom = 140.681
 text = "Debug"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Deck" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Card" type="Node" parent="Deck"]
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
