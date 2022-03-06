@@ -12,3 +12,6 @@ func set_name(name):
 
 func update_player_name():
 	player_name_output.set_text(player_name)
+
+func reset_and_randomize(local_seed):
+	player_name = ""
