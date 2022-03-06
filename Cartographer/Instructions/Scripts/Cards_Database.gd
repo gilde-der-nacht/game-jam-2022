@@ -1,5 +1,5 @@
-enum {SentinelWood, Greenbough, Treetower, StonesideForest, CanalLake, MagesValley, theGoldenGranary, ShoresideExpanse, Wildholds, GreatCity, GreengoldPlains, Shieldgate, Borderlands, LostBarony, 
-	theBrokenRoad, TheCauldrons, GreatRiver, Farmland, Hamlet, ForgottenForest, HinterlandStream, Homestead, Orchard, TreetopVillage, Marshlands, FishingVillage, RiftLands, Spring, Summer, Fall, Winter}
+enum {SentinelWood, Greenbough, Treetower, StonesideForest, CanalLake, MagesValley, TheGoldenGranary, ShoresideExpanse, Wildholds, GreatCity, GreengoldPlains, Shieldgate, Borderlands, LostBarony, 
+	TheBrokenRoad, TheCauldrons, GreatRiver, Farmland, Hamlet, ForgottenForest, HinterlandStream, Homestead, Orchard, TreetopVillage, Marshlands, FishingVillage, RiftLands, Spring, Summer, Fall, Winter}
 
 const DATA = {
 	SentinelWood :
@@ -14,7 +14,7 @@ const DATA = {
 		['Edict', "CanalLake", "0"],
 	MagesValley :
 		['Edict', "MagesValley", "0"],
-	theGoldenGranary :
+	TheGoldenGranary :
 		['Edict', "TheGoldenGranary", "0"],
 	ShoresideExpanse :
 		['Edict', "ShoresideExpanse", "0"],
@@ -30,7 +30,7 @@ const DATA = {
 		['Edict', "Borderlands", "0"],
 	LostBarony :
 		['Edict', "LostBarony", "0"],
-	theBrokenRoad :
+	TheBrokenRoad :
 		['Edict', "TheBrokenRoad", "0"],
 	TheCauldrons :
 		['Edict', "TheCauldrons", "0"],
