@@ -119,11 +119,23 @@ static func score_borderlands(dim, map):
 
 	return score
 
-static func test():
-	check(2, [[0, 0], [0, 0]])
+static func score_sentinel_wood(dim, map):
+	check(dim, map)
+	var score = 0
 
+	for y in range(dim):
+		for x in range(dim):
+			var n = neighbours(dim, map, x, y)
+			var is_border = (n.left == BO) or (n.right == BO) or (n.top == BO) or (n.bottom == BO)
+			if (n.center == FO) and is_border:
+				score += 1
+
+	return score
+
+static func test():
 	assert(score_greenbough(3, [[WA, WA, FO], [FO, FO, WA], [WA, WA, WA]]) == 5)
 	assert(score_mages_valley(3, [[FA, WA, EM], [WA, MO, FA], [WA, FA , EM]]) == 6)
 	assert(score_the_cauldrons(4, [[EM, WA, WA, EM], [WA, EM, WA, EM], [EM, WA, EM, EM], [EM, EM, EM, EM]]) == 2)
 	assert(score_borderlands(3, [[WA, WA, WA], [WA, WA, EM], [WA, EM, EM]]) == 12)
 	assert(score_treetower(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 2)
+	assert(score_sentinel_wood(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 3)
