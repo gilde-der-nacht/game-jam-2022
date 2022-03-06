@@ -76,11 +76,17 @@ func reset():
 func next_turn():
 	draw_card()
 	
+var game_state = "playing"
+
 func is_last_turn():
 	$"..".disable_round_button()
 	Seasons = "Spring"
 	infos_label.text += "\nGame Finished"
+	game_state = "end"
 	return "end"
+		
+func get_last_turn():
+	return game_state
 	
 func get_season():
 	return Seasons
@@ -203,7 +209,6 @@ func reset_deck():
 	
 var active_explore = null
 func draw_card():
-
 	randomize()
 	var new_explore = CardBase.instance()		
 	var Explorer_CardName = Explorer_CardList[randi() % Decksize]

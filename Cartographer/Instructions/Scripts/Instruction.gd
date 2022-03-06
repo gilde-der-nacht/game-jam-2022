@@ -32,3 +32,6 @@ func get_edicts():
 	
 func get_season():
 	return $Deck.get_season()
+
+func get_last_turn():
+	return $Deck.get_last_turn()
