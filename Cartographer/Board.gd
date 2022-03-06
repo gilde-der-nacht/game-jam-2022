@@ -27,14 +27,15 @@ func _on_ButtonInstructionReset_pressed():
 	pass
 
 func _on_ButtonInstructionNextTurn_pressed():
-	var edicts = [["ABC", 3], ["CDE", 4]]
-	var explore = [["XY", "AB"]]
-	if false:
-		$Instruction.next_turn()
-		edicts = $Instruction.current_edicts()
-		explore = $Instruction.current_explor()
+	$Instruction.next_turn()
+	var season = $Instruction.get_season()
+	var edicts = $Instruction.get_edicts()
+	var explore = $Instruction.get_explore()
+	var last_turn = $Instruction.get_last_turn()
+	$Log.text += "Season: " + String(season) + "\n"
 	$Log.text += "Edicts: " + String(edicts) + "\n"
 	$Log.text += "Explore: " + String(explore) + "\n"
+	$Log.text += "LastTurn: " + String(last_turn) + "\n"
 	$Log.cursor_set_line($Log.get_line_count()) # scroll to bottom
 
 func _on_ButtonMapReset_pressed():
