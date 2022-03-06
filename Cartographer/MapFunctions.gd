@@ -27,7 +27,7 @@ static func neighbours(dim, map, x, y):
 static func score_greenbough(dim, map):
 	check(dim, map)
 	var score = 0
-	
+
 	for y in range(dim):
 		var at_least_one = false
 		for x in range(dim):
@@ -43,9 +43,9 @@ static func score_greenbough(dim, map):
 				at_least_one = true
 		if at_least_one:
 			score += 1
-			
+
 	return score
-		
+
 static func score_mages_valley(dim, map):
 	check(dim, map)
 	var score = 0
@@ -59,9 +59,9 @@ static func score_mages_valley(dim, map):
 					score += 2
 				if n.center == FA:
 					score += 1
-	
+
 	return score
-	
+
 static func score_the_cauldrons(dim, map):
 	check(dim, map)
 	var score = 0
@@ -75,6 +75,24 @@ static func score_the_cauldrons(dim, map):
 			var bottom_filled = (n.bottom != EM) or (n.bottom == BO)
 			var all_filled = left_filled and right_filled and top_filled and bottom_filled
 			if (n.center == EM) and all_filled:
+				score += 1
+
+	return score
+
+# TODO almost the same as score_mages_valley
+static func score_treetower(dim, map):
+	check(dim, map)
+	var score = 0
+
+	for y in range(dim):
+		for x in range(dim):
+			var n = neighbours(dim, map, x, y)
+			var left_filled = (n.left != EM) or (n.left == BO)
+			var right_filled = (n.right != EM) or (n.right == BO)
+			var top_filled = (n.top != EM) or (n.top == BO)
+			var bottom_filled = (n.bottom != EM) or (n.bottom == BO)
+			var all_filled = left_filled and right_filled and top_filled and bottom_filled
+			if (n.center == FO) and all_filled:
 				score += 1
 
 	return score
@@ -103,8 +121,9 @@ static func score_borderlands(dim, map):
 
 static func test():
 	check(2, [[0, 0], [0, 0]])
-	
+
 	assert(score_greenbough(3, [[WA, WA, FO], [FO, FO, WA], [WA, WA, WA]]) == 5)
 	assert(score_mages_valley(3, [[FA, WA, EM], [WA, MO, FA], [WA, FA , EM]]) == 6)
 	assert(score_the_cauldrons(4, [[EM, WA, WA, EM], [WA, EM, WA, EM], [EM, WA, EM, EM], [EM, EM, EM, EM]]) == 2)
 	assert(score_borderlands(3, [[WA, WA, WA], [WA, WA, EM], [WA, EM, EM]]) == 12)
+	assert(score_treetower(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 2)
