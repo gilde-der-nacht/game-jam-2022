@@ -52,6 +52,7 @@ func draw_tile(tile, state):
 	var forest_img = preload("res://Graphics/Forest_Tile.png")
 	var village_img = preload("res://Graphics/Village_Tile.png")
 	var water_img = preload("res://Graphics/Water_Tile.png")
+	var empty_img = preload("res://Graphics/Monster_Tile.png")
 	var sprite = tile.get_graphic()
 	match state:
 		"MOUNTAIN":
@@ -65,5 +66,5 @@ func draw_tile(tile, state):
 		"WATER":
 			sprite.texture = water_img
 		_:
-			sprite.texture = null
+			sprite.texture = empty_img
 	
