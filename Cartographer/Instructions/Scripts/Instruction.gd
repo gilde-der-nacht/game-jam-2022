@@ -17,6 +17,9 @@ func _on_Button_pressed():
 
 func _on_Button2_pressed():
 	$Deck.reset()
+	
+func game_reset(rng_seed):
+	$Deck.reset(rng_seed)
 
 func disable_round_button():
 	$NextRoundButton.disabled = true

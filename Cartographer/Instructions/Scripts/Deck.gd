@@ -26,7 +26,6 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready():
-	rng.randomize()
 	var HatSchon = false
 	while Edicts_Array.size() != 4:
 		HatSchon = false
@@ -41,13 +40,15 @@ func _ready():
 	generate_edicts() 
 	edict_select()
 
-func reset():
+func reset(rng_seed):
 	
 	Edict_x = 460
 	Edict_y = 300
 	
 	$"..".activate_round_button()
 	Seasons = "Spring"
+	
+	rng.seed = rng_seed
 	
 	reset_deck()
 
@@ -57,8 +58,6 @@ func reset():
 	Edicts_Array = []
 	all_Edicts = []
 	
-	randomize()
-	rng.randomize()
 	var HatSchon = false
 	while Edicts_Array.size() != 4:
 		HatSchon = false
@@ -195,7 +194,7 @@ func get_edicts():
 		"Fall":
 			return [all_Edicts[2].Cardname, all_Edicts[3].Cardname]
 		"Winter":
-			return [all_Edicts[4].Cardname, all_Edicts[1].Cardname]
+			return [all_Edicts[3].Cardname, all_Edicts[1].Cardname]
 
 func get_explores():
 	return active_explore.Cardname
@@ -209,7 +208,7 @@ func reset_deck():
 	
 var active_explore = null
 func draw_card():
-	randomize()
+	game_state = "playing"
 	var new_explore = CardBase.instance()		
 	var Explorer_CardName = Explorer_CardList[randi() % Decksize]
 	new_explore.Cardname = Explorer_CardName
