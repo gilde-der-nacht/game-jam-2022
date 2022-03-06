@@ -10,6 +10,12 @@ const map_empty_state = [
 var map_state = map_empty_state.duplicate(true)
 onready var map_state_output = get_node("MapState")
 onready var grid_output = get_node("Grid")
+var current_tile_form = [Vector2(0,0), Vector2(0,1), Vector2(1,1)]
+var current_tile_kind = "WATER"
+onready var current_tile_grid_output = get_node("CurrentTileExample")
+onready var current_tile_output = get_node("CurrentTile")
+const TILE_SIZE = 50
+var mirrored = false
 
 func _ready():
 	update_ui()
@@ -21,7 +27,9 @@ func set_player_name(name):
 func update_ui():
 	player_name_output.set_text("player_name: " + player_name)
 	map_state_output.set_text("map_state: " + String(map_state))
+	current_tile_output.set_text("current_tile: " + String(current_tile_form) + " | " + current_tile_kind)
 	draw_map()
+	draw_current_tile(current_tile_form, current_tile_kind)
 
 func reset_and_randomize(_local_seed):
 	player_name = ""
@@ -47,8 +55,8 @@ func draw_map():
 			inst.connect("on_mouse_clicked", self, "on_Tile_mouse_clicked")
 			draw_tile(inst, elem)
 			grid_output.add_child(inst)
-			x_pos += 50
-		y_pos += 50
+			x_pos += TILE_SIZE
+		y_pos += TILE_SIZE
 		x_pos = 0
 
 func draw_tile(tile, state):
@@ -72,7 +80,16 @@ func draw_tile(tile, state):
 			sprite.texture = water_img
 		_:
 			sprite.texture = empty_img
-	
+
+func draw_current_tile(form: Array, type: String):
+	var tile = preload("res://Map/Tile.tscn")
+	for e in form:
+		var inst = tile.instance()
+		inst.position.x = e.x * TILE_SIZE
+		inst.position.y = e.y * TILE_SIZE
+		draw_tile(inst, type)
+		current_tile_grid_output.add_child(inst)
+
 func on_Tile_mouse_entered(tile):
 	print("hover: " + String(tile.pos))
 
