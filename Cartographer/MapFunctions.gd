@@ -10,22 +10,22 @@ const RU = "RUIN"
 const BO = "-" # Border
 
 """
-X Mages Valley
-X Sentinel Wood
-- Shield Gate (Cluster)
-- Shoreside Expanse (Cluster)
-- Stondeside Forest (Cluster)
-X The Broken Road
-X The Cauldrons
-- The Golden Granary (Ruins)
+X MagesValley
+X SentinelWood
+- ShieldGate (Cluster)
+- ShoresideExpanse (Cluster)
+- StondesideForest (Cluster)
+X TheBrokenRoad
+X TheCauldrons
+- TheGoldenGranary (Ruins)
 X Treetower
 - Wildholds (Cluster)
 X Borderlands
-- Canal Lake (Adjacent)
-- Great City (Cluster)
+- CanalLake (Adjacent)
+- GreatCity (Cluster)
 X Greenbough
-- Greengold Plains (Cluster)
-- Lost Barony (Largest Square)
+- GreengoldPlains (Cluster)
+- LostBarony (Largest Square)
 """
 
 static func check(dim, map):
