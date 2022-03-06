@@ -21,11 +21,11 @@ X TheCauldrons
 X Treetower
 - Wildholds (Cluster)
 X Borderlands
-- CanalLake (Adjacent)
+X CanalLake
 - GreatCity (Cluster)
 X Greenbough
 - GreengoldPlains (Cluster)
-- LostBarony (Largest Square)
+X LostBarony (Largest Square)
 """
 
 static func check(dim, map):
@@ -116,6 +116,7 @@ static func score_treetower(dim, map):
 
 	return score
 
+# TODO again, rotating the board would simplify the code
 static func score_borderlands(dim, map):
 	check(dim, map)
 	var score = 0
@@ -182,6 +183,24 @@ static func score_canal_lake(dim, map):
 
 	return score
 
+# takes only a few ms (use OS.get_system_time_msecs()) despite brute forcing through all possibilites
+static func score_lost_barony(dim, map):
+	check(dim, map)
+
+	for n in range(dim, 0, -1):
+		for y_start in range(dim - n + 1):
+			for x_start in range(dim - n + 1):
+				var filled = true
+				for y in range(n):
+					for x in range(n):
+						if map[y + y_start][x + x_start] == EM:
+							filled = false
+				if filled:
+					return n
+
+	# everything empty, should be impossible because of mountains
+	return 0
+
 static func test():
 	assert(score_greenbough(3, [[WA, WA, FO], [FO, FO, WA], [WA, WA, WA]]) == 5)
 	assert(score_mages_valley(3, [[FA, WA, EM], [WA, MO, FA], [WA, FA , EM]]) == 6)
@@ -191,3 +210,4 @@ static func test():
 	assert(score_sentinel_wood(4, [[FO, EM, FO, MO], [FO, FO, FO, WA], [MO, WA, WA, EM], [EM, EM, WA, MO]]) == 3)
 	assert(score_the_broken_road(3, [[WA, EM, WA], [EM, WA, EM], [WA, EM, WA]]) == 6)
 	assert(score_canal_lake(2, [[FA, WA], [WA, FO]]) == 3)
+	assert(score_lost_barony(3, [[WA, WA, EM], [WA, WA, WA], [EM, WA, EM]]) == 2)
