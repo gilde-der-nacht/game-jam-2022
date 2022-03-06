@@ -24,8 +24,10 @@ var Explore_y = 600
 var Edicts_Array = []
 var rng = RandomNumberGenerator.new()
 
+onready var game_state = "playing"
 
 func _ready():
+	game_state = "playing"
 	var HatSchon = false
 	while Edicts_Array.size() != 4:
 		HatSchon = false
@@ -75,8 +77,6 @@ func reset(rng_seed):
 	
 func next_turn():
 	draw_card()
-	
-var game_state = "playing"
 
 func is_last_turn():
 	$"..".disable_round_button()
