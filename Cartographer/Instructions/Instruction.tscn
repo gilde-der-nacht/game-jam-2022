@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Instruction" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 29.0
+margin_top = 43.0
+margin_right = 378.0
+margin_bottom = 130.0
+text = "Debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
