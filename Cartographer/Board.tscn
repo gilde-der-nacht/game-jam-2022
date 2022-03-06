@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Board.gd" type="Script" id=1]
 [ext_resource path="res://Map/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Map/Map.gd" type="Script" id=3]
+[ext_resource path="res://Instructions/Instruction.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -60,6 +61,9 @@ script = ExtResource( 3 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 872, 410 )
 current = true
+
+[node name="Instruction" parent="." instance=ExtResource( 4 )]
+position = Vector2( 453, 47 )
 
 [connection signal="pressed" from="ButtonInstructionReset" to="." method="_on_ButtonInstructionReset_pressed"]
 [connection signal="pressed" from="ButtonInstructionNextTurn" to="." method="_on_ButtonInstructionNextTurn_pressed"]
