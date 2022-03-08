@@ -56,19 +56,52 @@ static func neighbours(dim, map, x, y, swapXY=false):
 	var b = map[y + 1][x] if y < (dim - 1) else BO
 	return {center = c, left = l, right = r, top = t, bottom = b}
 
-# TODO instead of repeating half of the code, rotate board and call the same score function twice?
+static func clusters_find_unchecked(dim, map_checked):
+	for y in range(dim):
+		for x in range(dim):
+			if !map_checked[y][x]:
+				return {x = x, y = y}
+	return null
+
+static func clusters_size(dim, map, what, map_checked, x, y):
+	if map_checked[y][x]:
+		return 0
+	map_checked[y][x] = true
+	if map[y][x] != what:
+		return 0
+	var size = 1
+	size += clusters_size(dim, map, what, map_checked, x - 1, y) if x > 0 else 0
+	size += clusters_size(dim, map, what, map_checked, x, y - 1) if y > 0 else 0
+	size += clusters_size(dim, map, what, map_checked, x + 1, y) if x < (dim - 1) else 0
+	size += clusters_size(dim, map, what, map_checked, x, y + 1) if y < (dim - 1) else 0
+	return size
+
+static func clusters(dim, map, what):
+	var map_checked = create(dim, false)
+
+	var result = []
+	for n in range(dim * dim): # impossible to have more cluster than cells
+		var unchecked = clusters_find_unchecked(dim, map_checked)
+		if unchecked == null:
+			break
+		var size = clusters_size(dim, map, what, map_checked, unchecked.x, unchecked.y)
+		if size > 0:
+			result.append(size)
+
+	return result
+
 static func score_greenbough(dim, map):
 	check(dim, map)
 	var score = 0
 
 	for swapXY in [false, true]:
-	for y in range(dim):
-		var at_least_one = false
-		for x in range(dim):
+		for y in range(dim):
+			var at_least_one = false
+			for x in range(dim):
 				if neighbours(dim, map, x, y, swapXY).center == FO:
-				at_least_one = true
-		if at_least_one:
-			score += 1
+					at_least_one = true
+			if at_least_one:
+				score += 1
 
 	return score
 
@@ -126,15 +159,15 @@ static func score_treetower(dim, map):
 static func score_borderlands(dim, map):
 	check(dim, map)
 	var score = 0
-	
+
 	for swapXY in [false, true]:
-	for y in range(dim):
-		var complete = true
-		for x in range(dim):
+		for y in range(dim):
+			var complete = true
+			for x in range(dim):
 				if neighbours(dim, map, x, y, swapXY).center == EM:
-				complete = false
-		if complete:
-			score += 6
+					complete = false
+			if complete:
+				score += 6
 
 	return score
 
@@ -211,3 +244,4 @@ static func test():
 	assert(score_the_broken_road(3, [[WA, EM, WA], [EM, WA, EM], [WA, EM, WA]]) == 6)
 	assert(score_canal_lake(2, [[FA, WA], [WA, FO]]) == 3)
 	assert(score_lost_barony(3, [[WA, WA, EM], [WA, WA, WA], [EM, WA, EM]]) == 2)
+	#print(clusters(4, [[EM, EM, EM, WA], [EM, WA, WA, WA], [WA, EM, EM, EM], [WA, EM, EM, WA]], WA))
