@@ -12,7 +12,7 @@ const BO = "-" # Border
 """
 X MagesValley
 X SentinelWood
-- ShieldGate (Cluster)
+X ShieldGate (Cluster)
 - ShoresideExpanse (Cluster)
 - StondesideForest (Cluster)
 X TheBrokenRoad
@@ -88,6 +88,8 @@ static func clusters(dim, map, what):
 		if size > 0:
 			result.append(size)
 
+	result.sort()
+	result.invert()
 	return result
 
 static func score_greenbough(dim, map):
@@ -230,11 +232,24 @@ static func score_lost_barony(dim, map):
 				if filled:
 					return n
 
-	# everything empty, should be impossible because of mountains
+	# everything empty, should be impossible on a regular map because of mountains
 	return 0
+	
+static func score_shieldgate(dim, map):
+	check(dim, map)
+	
+	var c = clusters(dim, map, VI)
+	
+	if c.size() < 2:
+		return 0
+	else:
+		return c[1] * 2
+
 
 static func test():
 	check(5, create(5, EM))
+	assert(clusters(4, [[EM, EM, EM, WA], [EM, WA, WA, WA], [WA, EM, EM, EM], [EM, EM, WA, WA]], WA) == [4, 2, 1])
+
 	assert(score_greenbough(3, [[WA, WA, FO], [FO, FO, WA], [WA, WA, WA]]) == 5)
 	assert(score_mages_valley(3, [[FA, WA, EM], [WA, MO, FA], [WA, FA , EM]]) == 6)
 	assert(score_the_cauldrons(4, [[EM, WA, WA, EM], [WA, EM, WA, EM], [EM, WA, EM, EM], [EM, EM, EM, EM]]) == 2)
@@ -244,4 +259,4 @@ static func test():
 	assert(score_the_broken_road(3, [[WA, EM, WA], [EM, WA, EM], [WA, EM, WA]]) == 6)
 	assert(score_canal_lake(2, [[FA, WA], [WA, FO]]) == 3)
 	assert(score_lost_barony(3, [[WA, WA, EM], [WA, WA, WA], [EM, WA, EM]]) == 2)
-	#print(clusters(4, [[EM, EM, EM, WA], [EM, WA, WA, WA], [WA, EM, EM, EM], [WA, EM, EM, WA]], WA))
+	assert(score_shieldgate(6, [[VI, VI, EM, EM, EM, EM], [EM, VI, VI, EM, VI, VI], [EM, VI, VI, EM, EM, VI], [EM, EM, EM, EM, EM, EM], [EM, EM, EM, EM, EM, EM], [EM, EM, EM, EM, EM, EM]]) == 6)
