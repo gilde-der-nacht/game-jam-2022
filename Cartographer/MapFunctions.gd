@@ -44,6 +44,11 @@ static func create(dim, fill):
 		map.append(row)
 	return map
 
+static func neighbours(dim, map, x, y, swapXY=false):
+	if swapXY:
+		var t = y
+		y = x
+		x = t
 	var c = map[y][x]
 	var l = map[y][x - 1] if x > 0 else BO
 	var r = map[y][x + 1] if x < (dim - 1) else BO
@@ -56,18 +61,11 @@ static func score_greenbough(dim, map):
 	check(dim, map)
 	var score = 0
 
+	for swapXY in [false, true]:
 	for y in range(dim):
 		var at_least_one = false
 		for x in range(dim):
-			if map[y][x] == FO:
-				at_least_one = true
-		if at_least_one:
-			score += 1
-
-	for x in range(dim):
-		var at_least_one = false
-		for y in range(dim):
-			if map[y][x] == FO:
+				if neighbours(dim, map, x, y, swapXY).center == FO:
 				at_least_one = true
 		if at_least_one:
 			score += 1
@@ -125,23 +123,15 @@ static func score_treetower(dim, map):
 
 	return score
 
-# TODO again, rotating the board would simplify the code
 static func score_borderlands(dim, map):
 	check(dim, map)
 	var score = 0
 	
+	for swapXY in [false, true]:
 	for y in range(dim):
 		var complete = true
 		for x in range(dim):
-			if map[y][x] == EM:
-				complete = false
-		if complete:
-			score += 6
-
-	for x in range(dim):
-		var complete = true
-		for y in range(dim):
-			if map[y][x] == EM:
+				if neighbours(dim, map, x, y, swapXY).center == EM:
 				complete = false
 		if complete:
 			score += 6
