@@ -34,7 +34,16 @@ static func check(dim, map):
 	for row in map:
 		assert(row.size() == dim)
 
-static func neighbours(dim, map, x, y):
+# create square 2d array
+static func create(dim, fill):
+	var map = []
+	for y in range(dim):
+		var row = []
+		for x in range(dim):
+			row.append(fill)
+		map.append(row)
+	return map
+
 	var c = map[y][x]
 	var l = map[y][x - 1] if x > 0 else BO
 	var r = map[y][x + 1] if x < (dim - 1) else BO
@@ -202,6 +211,7 @@ static func score_lost_barony(dim, map):
 	return 0
 
 static func test():
+	check(5, create(5, EM))
 	assert(score_greenbough(3, [[WA, WA, FO], [FO, FO, WA], [WA, WA, WA]]) == 5)
 	assert(score_mages_valley(3, [[FA, WA, EM], [WA, MO, FA], [WA, FA , EM]]) == 6)
 	assert(score_the_cauldrons(4, [[EM, WA, WA, EM], [WA, EM, WA, EM], [EM, WA, EM, EM], [EM, EM, EM, EM]]) == 2)
