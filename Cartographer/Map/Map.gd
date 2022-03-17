@@ -14,6 +14,7 @@ const TILE_SIZE = 50
 var mirrored = true
 var rotated = 0
 var current_hover_position_form = []
+var ready = false
 
 func _ready():
 	reset_and_randomize(0)
@@ -25,7 +26,7 @@ func set_player_name(name):
 func update_ui():
 	player_name_output.set_text("player_name: " + player_name)
 	map_state_output.set_text("map_state: " + String(map_state))
-	current_tile_output.set_text("current_tile: " + String(current_tile_form) + " | " + current_tile_kind + " \nmirrored: " + String(mirrored) + " | rotated: " + String(rotated)+ " \ncurrent_hover: " + String(current_hover_position_form))
+	current_tile_output.set_text("current_tile: " + String(current_tile_form) + " | " + current_tile_kind + " \nmirrored: " + String(mirrored) + " | rotated: " + String(rotated)+ " \ncurrent_hover: " + String(current_hover_position_form) + "\nReady: " + String(ready))
 	
 	draw_map()
 	draw_current_tile(current_tile_form, current_tile_kind)
@@ -136,6 +137,7 @@ func delete_children(node):
 		n.queue_free()
 
 func set_current_tile(form, kind):
+	ready = false
 	mirrored = false
 	rotated = 0
 	current_hover_position_form = []
@@ -178,6 +180,8 @@ func transform_form(form):
 	return newNewForm
 
 func on_Tile_mouse_entered(tile):
+	if ready:
+		return
 	current_hover_position_form = []
 	for v in transform_form(current_tile_form):
 		var new_v = move_vec(v, tile.pos)
@@ -195,5 +199,6 @@ func on_Tile_mouse_clicked(tile):
 	for v in current_hover_position_form:
 		map_state[v.y][v.x] = current_tile_kind
 	current_hover_position_form = []
+	ready = true
 	update_ui()
 	
