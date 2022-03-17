@@ -10,7 +10,7 @@ const map_empty_state = [
 var map_state = map_empty_state.duplicate(true)
 onready var map_state_output = get_node("MapState")
 onready var grid_output = get_node("Grid")
-var current_tile_form = [Vector2(0,0), Vector2(0,1), Vector2(1,1), Vector2(2,1)]
+var current_tile_form = []
 var current_tile_kind = "WATER"
 onready var current_tile_grid_output = get_node("CurrentTileExample")
 onready var current_tile_output = get_node("CurrentTile")
@@ -119,3 +119,9 @@ func delete_children(node):
 	for n in node.get_children():
 		node.remove_child(n)
 		n.queue_free()
+
+func set_current_tile(form, kind):
+	mirrored = false
+	current_tile_form = form
+	current_tile_kind = kind
+	update_ui()

@@ -37,6 +37,7 @@ func _on_ButtonInstructionNextTurn_pressed():
 		var season = $Instruction.get_season()
 		var edicts = $Instruction.get_edicts()
 		var explore = $Instruction.get_explore()
+		send_current_explore_to_map(explore)
 		var last_turn = $Instruction.get_last_turn() == "end"
 		var season_changed = season != seaseon_previous
 		seaseon_previous = season
@@ -56,3 +57,41 @@ func _on_ButtonMapSetPlayerNames_pressed():
 	$Map1.set_player_name("Flutschi")
 	$Map2.set_player_name("Oliver")
 	$Map3.set_player_name("Thomas")
+
+func send_current_explore_to_map(explore):
+	match explore:
+		"RiftLands":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0)], "FOREST")
+		"Homestead":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(0,1), Vector2(0,2), Vector2(1,1)], "VILLAGE")
+		"Hamlet":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(0,1), Vector2(1,1)], "VILLAGE")
+		"FishingVillage":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(1,0), Vector2(2,0), Vector2(3,0)], "VILLAGE")
+		"Marshlands":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(0,1), Vector2(0,2), Vector2(1,1), Vector2(2,1)], "FOREST")
+		"TreetopVillage":
+			for map in maps:
+				map.set_current_tile([Vector2(0,1), Vector2(1,1), Vector2(2,1), Vector2(2,0), Vector2(3,0)], "FOREST")
+		"HinterlandStream":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(0,1), Vector2(0,2), Vector2(1,0), Vector2(2,0)], "FARM")
+		"Farmland":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(0,1)], "FARM")
+		"ForgottenForest":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(1,1)], "FOREST")
+		"GreatRiver":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(0,1), Vector2(0,2)], "WATER")
+		"Orchard":
+			for map in maps:
+				map.set_current_tile([Vector2(0,0), Vector2(1,0), Vector2(2,0), Vector2(2,1)], "FOREST")
+		_:
+			print("not found", explore)
