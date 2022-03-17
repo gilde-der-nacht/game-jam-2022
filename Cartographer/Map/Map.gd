@@ -192,4 +192,8 @@ func on_Tile_mouse_entered(tile):
 	update_ui()
 
 func on_Tile_mouse_clicked(tile):
-	print("click: " + String(tile.pos))
+	for v in current_hover_position_form:
+		map_state[v.y][v.x] = current_tile_kind
+	current_hover_position_form = []
+	update_ui()
+	
