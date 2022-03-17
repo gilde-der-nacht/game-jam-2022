@@ -48,20 +48,20 @@ __meta__ = {
 }
 
 [node name="Map1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 430, 585 )
+position = Vector2( 1600, 581 )
 
 [node name="Map2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 802, 572 )
+position = Vector2( 1070, 578 )
 
 [node name="Map3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1153, 573 )
+position = Vector2( 561, 581 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 850, 450 )
 current = true
 
 [node name="Instruction" parent="." instance=ExtResource( 4 )]
-position = Vector2( 453, 47 )
+position = Vector2( 267, 37 )
 
 [node name="Log" type="TextEdit" parent="."]
 margin_left = 25.0
