@@ -16,6 +16,7 @@ onready var current_tile_grid_output = get_node("CurrentTileExample")
 onready var current_tile_output = get_node("CurrentTile")
 const TILE_SIZE = 50
 var mirrored = true
+var rotated = 0
 
 func _ready():
 	update_ui()
@@ -27,7 +28,7 @@ func set_player_name(name):
 func update_ui():
 	player_name_output.set_text("player_name: " + player_name)
 	map_state_output.set_text("map_state: " + String(map_state))
-	current_tile_output.set_text("current_tile: " + String(current_tile_form) + " | " + current_tile_kind + " | mirrored: " + String(mirrored))
+	current_tile_output.set_text("current_tile: " + String(current_tile_form) + " | " + current_tile_kind + " | mirrored: " + String(mirrored) + " | rotated: " + String(rotated))
 	draw_map()
 	draw_current_tile(current_tile_form, current_tile_kind)
 
@@ -85,14 +86,15 @@ func draw_tile(tile, state):
 func draw_current_tile(form: Array, type: String):
 	delete_children(current_tile_grid_output)
 	var tile = preload("res://Map/Tile.tscn")
-	for e in form:
+	var trans_form = transform_form(form) 
+	var corr = get_corr_vec(trans_form)
+	print(trans_form, corr)
+	
+	for e in trans_form:
+		var a = absolute_vec(e, corr)
 		var inst = tile.instance()
-		if mirrored:
-			var max_width = get_max_width(form)
-			inst.position.x = (max_width - e.x) * TILE_SIZE
-		else:
-			inst.position.x = e.x * TILE_SIZE
-		inst.position.y = e.y * TILE_SIZE
+		inst.position.x = a.x * TILE_SIZE
+		inst.position.y = a.y * TILE_SIZE
 		draw_tile(inst, type)
 		current_tile_grid_output.add_child(inst)
 
@@ -103,9 +105,24 @@ func get_max_width(form: Array):
 			max_width = e.x
 	return max_width
 
+func get_corr_vec(trans_form):
+	var corr_vec = Vector2.ZERO
+	for e in trans_form:
+		if corr_vec.x > e.x:
+			corr_vec.x = e.x
+		if corr_vec.y > e.y:
+			corr_vec.y =e.y
+	return corr_vec
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("mirror_tile"):
 		mirrored = !mirrored
+		update_ui()
+	if Input.is_action_pressed("rotate_tile"):
+		if rotated == 3:
+			rotated = 0
+		else:
+			rotated = rotated + 1
 		update_ui()
 
 func on_Tile_mouse_entered(tile):
@@ -122,6 +139,36 @@ func delete_children(node):
 
 func set_current_tile(form, kind):
 	mirrored = false
+	rotated = 0
 	current_tile_form = form
 	current_tile_kind = kind
 	update_ui()
+	
+func mirror_vec(v, max_width):
+	var v2 = Vector2(v.x, v.y)
+	if mirrored:
+		v2.x = max_width - v.x
+	return v2
+
+func rotate_vec(v):
+	if rotated == 0:
+		return v
+	if rotated == 1:
+		return v.rotated(deg2rad(90))
+	if rotated == 2:
+		return v.rotated(deg2rad(180))
+	if rotated == 3:
+		return v.rotated(deg2rad(270))
+
+func absolute_vec(v, corr):
+	v.x = v.x - corr.x
+	v.y = v.y - corr.y
+	return v
+
+func transform_form(form):
+	var newForm = []
+	for e in form:
+		var m = mirror_vec(e, get_max_width(form))
+		var r = rotate_vec(m)
+		newForm.append(r)
+	return newForm
