@@ -2,12 +2,8 @@ extends Node2D
 
 var player_name = ""
 onready var player_name_output = get_node("PlayerName")
-const map_empty_state = [
-	["EMPTY","EMPTY","EMPTY"],
-	["EMPTY","EMPTY","EMPTY"],
-	["EMPTY","EMPTY","EMPTY"],
-]
-var map_state = map_empty_state.duplicate(true)
+const MAP_SIZE = 5
+var map_state = []
 onready var map_state_output = get_node("MapState")
 onready var grid_output = get_node("Grid")
 var current_tile_form = []
@@ -19,7 +15,7 @@ var mirrored = true
 var rotated = 0
 
 func _ready():
-	update_ui()
+	reset_and_randomize(0)
 
 func set_player_name(name):
 	player_name = name
@@ -34,7 +30,11 @@ func update_ui():
 
 func reset_and_randomize(_local_seed):
 	player_name = ""
-	map_state = map_empty_state.duplicate(true)
+	for _i in range(MAP_SIZE):
+		var row = []
+		for _j in range(MAP_SIZE):
+			row.append("EMPTY")
+		map_state.append(row)
 	update_ui()
 
 func get_map():
