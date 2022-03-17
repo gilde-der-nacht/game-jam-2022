@@ -37,9 +37,9 @@ static func check(dim, map):
 # create square 2d array
 static func create(dim, fill):
 	var map = []
-	for y in range(dim):
+	for _y in range(dim):
 		var row = []
-		for x in range(dim):
+		for _x in range(dim):
 			row.append(fill)
 		map.append(row)
 	return map
@@ -80,7 +80,7 @@ static func clusters(dim, map, what):
 	var map_checked = create(dim, false)
 
 	var result = []
-	for n in range(dim * dim): # impossible to have more cluster than cells
+	for _n in range(dim * dim): # impossible to have more cluster than cells
 		var unchecked = clusters_find_unchecked(dim, map_checked)
 		if unchecked == null:
 			break

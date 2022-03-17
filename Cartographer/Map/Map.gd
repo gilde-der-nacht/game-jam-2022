@@ -118,7 +118,7 @@ func get_corr_vec(trans_form):
 			corr_vec.y =e.y
 	return corr_vec
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent):
 	if Input.is_action_pressed("mirror_tile"):
 		current_hover_position_form = []
 		mirrored = !mirrored
@@ -195,10 +195,9 @@ func on_Tile_mouse_entered(tile):
 			current_hover_position_form = []
 	update_ui()
 
-func on_Tile_mouse_clicked(tile):
+func on_Tile_mouse_clicked(_tile):
 	for v in current_hover_position_form:
 		map_state[v.y][v.x] = current_tile_kind
 	current_hover_position_form = []
 	ready = true
 	update_ui()
-	
