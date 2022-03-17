@@ -9,7 +9,7 @@ script = ExtResource( 1 )
 position = Vector2( 45, 45 )
 
 [node name="CurrentTileExample" type="Node2D" parent="."]
-position = Vector2( 45, 219 )
+position = Vector2( 326, 45 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_top = 353.0
