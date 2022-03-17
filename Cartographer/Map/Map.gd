@@ -182,6 +182,13 @@ func on_Tile_mouse_entered(tile):
 	for v in transform_form(current_tile_form):
 		var new_v = move_vec(v, tile.pos)
 		current_hover_position_form.append(new_v)
+	for v in current_hover_position_form:
+		if v.x >= MAP_SIZE:
+			current_hover_position_form = []
+		elif v.y >= MAP_SIZE:
+			current_hover_position_form = []
+		elif !(map_state[v.y][v.x] == "EMPTY"):
+			current_hover_position_form = []
 	update_ui()
 
 func on_Tile_mouse_clicked(tile):
